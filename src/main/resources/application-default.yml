@@ -1,0 +1,19 @@
+server:
+  port: 9990
+
+spring:
+  application:
+    name: cloudclient
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8088/eureka/
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeout-in-milliseconds: 5000

@@ -1,0 +1,58 @@
+group = 'com.zhangype'
+version = '1.0-SNAPSHOT'
+
+buildscript {
+    ext {
+        springBootVersion = '1.5.2.RELEASE'
+    }
+    repositories {
+        mavenLocal()
+        maven { url 'http://172.30.3.176:8081/nexus/content/groups/public/' }
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+        maven { url 'http://repo.spring.io/snapshot' }
+        maven { url 'http://repo.spring.io/milestone' }
+    }
+    dependencies {
+        classpath "io.spring.gradle:dependency-management-plugin:0.5.6.RELEASE"
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:$springBootVersion"
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: "io.spring.dependency-management"
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenLocal()
+    maven { url 'http://172.30.3.176:8081/nexus/content/groups/public/' }
+    maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+    maven { url 'http://repo.spring.io/snapshot' }
+    maven { url 'http://repo.spring.io/milestone' }
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:Camden.SR5"
+    }
+}
+
+dependencies {
+    compile(
+            "org.springframework.boot:spring-boot-starter-web:${springBootVersion}",
+            "org.springframework.boot:spring-boot-starter:${springBootVersion}",
+            "org.springframework.cloud:spring-cloud-starter-feign:1.4.0.RELEASE",
+            "org.springframework.cloud:spring-cloud-starter-ribbon:1.4.0.RELEASE",
+            "org.springframework.cloud:spring-cloud-starter-hystrix:1.4.0.RELEASE",
+            "org.springframework.cloud:spring-cloud-starter-zookeeper-discovery:1.2.0.RELEASE",
+            "org.springframework.cloud:spring-cloud-starter-eureka-server:1.2.5.RELEASE",
+            "org.springframework.retry:spring-retry:1.2.0.RELEASE"
+    )
+
+    testCompile(
+            "org.springframework.boot:spring-boot-starter-test:${springBootVersion}",
+            "junit:junit:4.12"
+    )
+}
