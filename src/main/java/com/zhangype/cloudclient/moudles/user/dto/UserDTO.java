@@ -3,7 +3,7 @@ package com.zhangype.cloudclient.moudles.user.dto;
 /**
  * 用户DTO
  *
- * @author zhangype@yonyou.com
+ * @author 1141404898@qq.com
  * @version V1.0.0
  * @date 2018/1/10
  */

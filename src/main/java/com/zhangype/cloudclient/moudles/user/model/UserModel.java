@@ -3,7 +3,7 @@ package com.zhangype.cloudclient.moudles.user.model;
 /**
  * 用户Model
  *
- * @author zhangype@yonyou.com
+ * @author 1141404898@qq.com
  * @version V1.0.0
  * @date 2018/1/10
  */
